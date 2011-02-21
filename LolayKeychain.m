@@ -8,8 +8,9 @@
 @implementation LolayKeychain
 
 + (void) save:(NSString*)value forKey:(NSString*)key {
-	NSAssert(key != nil, @"Invalid key");
-	NSAssert(value != nil, @"Invalid value");
+	if (key == nil || value == nil) {
+		return;
+	}
 	
 	NSMutableDictionary *query = [NSMutableDictionary dictionary];
 	
@@ -24,20 +25,20 @@
 																	  forKey:(id)kSecValueData];
 		
 		error = SecItemUpdate((CFDictionaryRef)query, (CFDictionaryRef)attributesToUpdate);
-		NSAssert2(error == errSecSuccess, @"SecItemUpdate failed: %d for key %@", error, key);
+		NSLog(@"SecItemUpdate failed: %i for %@", (int)error, key);
 	} else if (error == errSecItemNotFound) {
 		// do add
 		[query setObject:[value dataUsingEncoding:NSUTF8StringEncoding] forKey:(id)kSecValueData];
 		
 		error = SecItemAdd((CFDictionaryRef)query, NULL);
-		NSAssert2(error == errSecSuccess, @"SecItemAdd failed: %d for key %@", error, key);
-	} else {
-		NSAssert2(NO, @"SecItemCopyMatching failed: %d for key %@", error, key);
+		NSLog(@"SecItemAdd failed: %i for %@", (int)error, key);
 	}
 }
 
 + (NSString*) stringForKey:(NSString*)key {
-	NSAssert(key != nil, @"Invalid key");
+	if (key == nil) {
+		return nil;
+	}
 	
 	NSMutableDictionary *query = [NSMutableDictionary dictionary];
 
@@ -52,8 +53,6 @@
 	NSString *stringToReturn = nil;
 	if (error == errSecSuccess) {
 		stringToReturn = [[[NSString alloc] initWithData:dataFromKeychain encoding:NSUTF8StringEncoding] autorelease];
-	} else {
-		NSAssert2(NO, @"SecItemCopyMatching failed: %d for key %@", error, key);
 	}
 	
 	[dataFromKeychain release];
@@ -62,8 +61,10 @@
 }
 
 + (void) deleteForKey:(NSString*)key {
-	NSAssert(key != nil, @"Invalid key");
-
+	if (key == nil) {
+		return;
+	}
+	
 	NSMutableDictionary *query = [NSMutableDictionary dictionary];
 	
 	[query setObject:(id)kSecClassGenericPassword forKey:(id)kSecClass];
