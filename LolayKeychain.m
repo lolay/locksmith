@@ -7,10 +7,6 @@
 
 @implementation LolayKeychain
 
-+ (void) save:(NSString*)value forKey:(NSString*)key;
-+ (NSString*) stringForKey:(NSString*)key;
-+ (void) deleteForKey:(NSString*)key;
-
 + (void) save:(NSString*)value forKey:(NSString*)key {
 	NSAssert(key != nil, @"Invalid key");
 	NSAssert(value != nil, @"Invalid value");
@@ -28,15 +24,15 @@
 																	  forKey:(id)kSecValueData];
 		
 		error = SecItemUpdate((CFDictionaryRef)query, (CFDictionaryRef)attributesToUpdate);
-		NSAssert1(error == errSecSuccess, @"SecItemUpdate failed: %d", error);
+		NSAssert2(error == errSecSuccess, @"SecItemUpdate failed: %d for key %@", error, key);
 	} else if (error == errSecItemNotFound) {
 		// do add
 		[query setObject:[value dataUsingEncoding:NSUTF8StringEncoding] forKey:(id)kSecValueData];
 		
 		error = SecItemAdd((CFDictionaryRef)query, NULL);
-		NSAssert1(error == errSecSuccess, @"SecItemAdd failed: %d", error);
+		NSAssert2(error == errSecSuccess, @"SecItemAdd failed: %d for key %@", error, key);
 	} else {
-		NSAssert1(NO, @"SecItemCopyMatching failed: %d", error);
+		NSAssert2(NO, @"SecItemCopyMatching failed: %d for key %@", error, key);
 	}
 }
 
@@ -56,6 +52,8 @@
 	NSString *stringToReturn = nil;
 	if (error == errSecSuccess) {
 		stringToReturn = [[[NSString alloc] initWithData:dataFromKeychain encoding:NSUTF8StringEncoding] autorelease];
+	} else {
+		NSAssert2(NO, @"SecItemCopyMatching failed: %d for key %@", error, key);
 	}
 	
 	[dataFromKeychain release];
@@ -73,7 +71,7 @@
 		
 	OSStatus status = SecItemDelete((CFDictionaryRef)query);
 	if (status != errSecSuccess) {
-		NSLog(@"SecItemDelete failed: %d", status);
+		NSLog(@"SecItemDelete failed: %@", key);
 	}
 }
 
