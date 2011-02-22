@@ -16,7 +16,9 @@
 	
 	[query setObject:(id)kSecClassGenericPassword forKey:(id)kSecClass];
 	[query setObject:key forKey:(id)kSecAttrAccount];
-	[query setObject:(id)kSecAttrAccessibleWhenUnlocked forKey:(id)kSecAttrAccessible];
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_4_0
+	[query setObject:(id)kSecAttrAccessibleAlways forKey:(id)kSecAttrAccessible];
+#endif
 	
 	OSStatus error = SecItemCopyMatching((CFDictionaryRef)query, NULL);
 	if (error == errSecSuccess) {
