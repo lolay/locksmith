@@ -25,15 +25,17 @@
 		// do update
 		NSDictionary *attributesToUpdate = [NSDictionary dictionaryWithObject:[value dataUsingEncoding:NSUTF8StringEncoding] 
 																	  forKey:(id)kSecValueData];
-		
 		error = SecItemUpdate((CFDictionaryRef)query, (CFDictionaryRef)attributesToUpdate);
-		NSLog(@"SecItemUpdate failed: %i for %@", (int)error, key);
+		if (error != errSecSuccess) {
+			NSLog(@"SecItemUpdate failed: %i for %@", (int)error, key);
+		}
 	} else if (error == errSecItemNotFound) {
 		// do add
 		[query setObject:[value dataUsingEncoding:NSUTF8StringEncoding] forKey:(id)kSecValueData];
-		
 		error = SecItemAdd((CFDictionaryRef)query, NULL);
-		NSLog(@"SecItemAdd failed: %i for %@", (int)error, key);
+		if (error != errSecSuccess) {
+			NSLog(@"SecItemAdd failed: %i for %@", (int)error, key);
+		}
 	}
 }
 
