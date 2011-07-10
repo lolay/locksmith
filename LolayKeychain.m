@@ -23,7 +23,7 @@
 }
 
 + (NSData *)searchKeychainCopyMatching:(NSString *)key {    
-    NSMutableDictionary *searchDictionary = [[self createSearchDictionary:key] retain];
+    NSMutableDictionary *searchDictionary = [[LolayKeychain createSearchDictionary:key] retain];
     // Add search attributes
     [searchDictionary setObject:(id)kSecMatchLimitOne forKey:(id)kSecMatchLimit];
     // Add search return types
@@ -41,7 +41,7 @@
 
 + (BOOL) save:(NSString*)value forKey:(NSString*)key {
     BOOL success = NO;
-    NSMutableDictionary *dictionary = [[self createSearchDictionary:key] retain];
+    NSMutableDictionary *dictionary = [[LolayKeychain createSearchDictionary:key] retain];
     NSData *data = [value dataUsingEncoding:NSUTF8StringEncoding];
     [dictionary setObject:data forKey:(id)kSecValueData];
     OSStatus addStatus = SecItemAdd((CFDictionaryRef)dictionary, NULL);    
@@ -71,7 +71,7 @@
 + (NSString*) stringForKey:(NSString*)key {
     NSString *returnString = nil;
 	if (key != nil) {    
-        NSData *data = [[self searchKeychainCopyMatching:key] retain];    
+        NSData *data = [[LolayKeychain searchKeychainCopyMatching:key] retain];    
         if (data) {
             returnString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
             [data release];
@@ -87,7 +87,7 @@
 		return NO;
 	}
     
-    NSMutableDictionary *searchDictionary = [[self createSearchDictionary:key] retain];    
+    NSMutableDictionary *searchDictionary = [[LolayKeychain createSearchDictionary:key] retain];    
     OSStatus status = SecItemDelete((CFDictionaryRef)searchDictionary);
     NSLog(@"[LolayKeychain deleteForKey] SecItemDelete result: %i [%@]", (int)status, key);
     [searchDictionary release];    
