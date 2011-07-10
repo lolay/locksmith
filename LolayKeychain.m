@@ -12,10 +12,11 @@
 		return;
 	}
 	
-	NSMutableDictionary *query = [NSMutableDictionary dictionary];
-	
+	NSMutableDictionary *query = [[NSMutableDictionary alloc] initWithCapacity:3];
 	[query setObject:(id)kSecClassGenericPassword forKey:(id)kSecClass];
-	[query setObject:key forKey:(id)kSecAttrAccount];
+    NSData *encodedKey = [key dataUsingEncoding:NSUTF8StringEncoding];
+    [query setObject:encodedKey forKey:(id)kSecAttrGeneric];
+	[query setObject:encodedKey forKey:(id)kSecAttrAccount];
 #if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_4_0
 	[query setObject:(id)kSecAttrAccessibleAlways forKey:(id)kSecAttrAccessible];
 #endif
@@ -23,7 +24,7 @@
 	OSStatus error = SecItemCopyMatching((CFDictionaryRef)query, NULL);
 	if (error == errSecSuccess) {
 		// do update
-		NSDictionary *attributesToUpdate = [NSDictionary dictionaryWithObject:[value dataUsingEncoding:NSUTF8StringEncoding] 
+		NSDictionary *attributesToUpdate = [NSDictionary dictionaryWithObject:encodedKey 
 																	  forKey:(id)kSecValueData];
 		error = SecItemUpdate((CFDictionaryRef)query, (CFDictionaryRef)attributesToUpdate);
 		if (error != errSecSuccess) {
@@ -37,6 +38,8 @@
 			NSLog(@"SecItemAdd failed: %i for %@", (int)error, key);
 		}
 	}
+    
+    [query release];
 }
 
 + (NSString*) stringForKey:(NSString*)key {
@@ -44,23 +47,22 @@
 		return nil;
 	}
 	
-	NSMutableDictionary *query = [NSMutableDictionary dictionary];
-
+	NSMutableDictionary *query = [[NSMutableDictionary alloc] initWithCapacity:3];
 	[query setObject:(id)kSecClassGenericPassword forKey:(id)kSecClass];
-	[query setObject:key forKey:(id)kSecAttrAccount];
+    NSData *encodedKey = [key dataUsingEncoding:NSUTF8StringEncoding];
+	[query setObject:encodedKey forKey:(id)kSecAttrAccount];
 	[query setObject:(id)kCFBooleanTrue forKey:(id)kSecReturnData];
 
 	NSData *dataFromKeychain = nil;
-
 	OSStatus error = SecItemCopyMatching((CFDictionaryRef)query, (CFTypeRef *)&dataFromKeychain);
-	
 	NSString *stringToReturn = nil;
 	if (error == errSecSuccess) {
 		stringToReturn = [[[NSString alloc] initWithData:dataFromKeychain encoding:NSUTF8StringEncoding] autorelease];
 	}
 	
 	[dataFromKeychain release];
-	
+	[query release];
+    
 	return stringToReturn;
 }
 
@@ -70,9 +72,9 @@
 	}
 	
 	NSMutableDictionary *query = [NSMutableDictionary dictionary];
-	
 	[query setObject:(id)kSecClassGenericPassword forKey:(id)kSecClass];
-	[query setObject:key forKey:(id)kSecAttrAccount];
+    NSData *encodedKey = [key dataUsingEncoding:NSUTF8StringEncoding];
+	[query setObject:encodedKey forKey:(id)kSecAttrAccount];
 		
 	OSStatus status = SecItemDelete((CFDictionaryRef)query);
 	if (status != errSecSuccess) {
