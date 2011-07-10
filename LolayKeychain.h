@@ -7,8 +7,8 @@
 
 @interface LolayKeychain : NSObject
 
-+ (void) save:(NSString*)value forKey:(NSString*)key;
++ (BOOL) save:(NSString*)value forKey:(NSString*)key;
 + (NSString*) stringForKey:(NSString*)key;
-+ (void) deleteForKey:(NSString*)key;
++ (BOOL) deleteForKey:(NSString*)key;
 
 @end

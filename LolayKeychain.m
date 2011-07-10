@@ -7,79 +7,95 @@
 
 @implementation LolayKeychain
 
-+ (void) save:(NSString*)value forKey:(NSString*)key {
-	if (key == nil || value == nil) {
-		return;
-	}
-	
-	NSMutableDictionary *query = [[NSMutableDictionary alloc] initWithCapacity:3];
-	[query setObject:(id)kSecClassGenericPassword forKey:(id)kSecClass];
-    NSData *encodedKey = [key dataUsingEncoding:NSUTF8StringEncoding];
-    [query setObject:encodedKey forKey:(id)kSecAttrGeneric];
-	[query setObject:encodedKey forKey:(id)kSecAttrAccount];
-#if __IPHONE_OS_VERSION_MIN_REQUIRED >= __IPHONE_4_0
-	[query setObject:(id)kSecAttrAccessibleAlways forKey:(id)kSecAttrAccessible];
-#endif
-	
-	OSStatus error = SecItemCopyMatching((CFDictionaryRef)query, NULL);
-	if (error == errSecSuccess) {
-		// do update
-		NSDictionary *attributesToUpdate = [NSDictionary dictionaryWithObject:encodedKey 
-																	  forKey:(id)kSecValueData];
-		error = SecItemUpdate((CFDictionaryRef)query, (CFDictionaryRef)attributesToUpdate);
-		if (error != errSecSuccess) {
-			NSLog(@"SecItemUpdate failed: %i for %@", (int)error, key);
-		}
-	} else if (error == errSecItemNotFound) {
-		// do add
-		[query setObject:[value dataUsingEncoding:NSUTF8StringEncoding] forKey:(id)kSecValueData];
-		error = SecItemAdd((CFDictionaryRef)query, NULL);
-		if (error != errSecSuccess) {
-			NSLog(@"SecItemAdd failed: %i for %@", (int)error, key);
-		}
-	}
+#pragma mark Helper Methods
+
++ (NSMutableDictionary *)createSearchDictionary:(NSString *)key {    
+    NSMutableDictionary *searchDictionary = [[NSMutableDictionary alloc] init];  
+    [searchDictionary setObject:(id)kSecClassGenericPassword forKey:(id)kSecClass];
+    NSData *encodedIdentifier = [key dataUsingEncoding:NSUTF8StringEncoding];    
+    [searchDictionary setObject:encodedIdentifier forKey:(id)kSecAttrGeneric];    
+    [searchDictionary setObject:encodedIdentifier forKey:(id)kSecAttrAccount];
+    NSString *serviceName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
+    [searchDictionary setObject:serviceName forKey:(id)kSecAttrService];    
+    NSLog(@"[LolayKeychain createSearchDictionary] dictionary: %@ [%@]", searchDictionary, key);
     
-    [query release];
+    return [searchDictionary autorelease]; 
+}
+
++ (NSData *)searchKeychainCopyMatching:(NSString *)key {    
+    NSMutableDictionary *searchDictionary = [[self createSearchDictionary:key] retain];
+    // Add search attributes
+    [searchDictionary setObject:(id)kSecMatchLimitOne forKey:(id)kSecMatchLimit];
+    // Add search return types
+    [searchDictionary setObject:(id)kCFBooleanTrue forKey:(id)kSecReturnData];
+    NSData *result = nil;
+    SecItemCopyMatching((CFDictionaryRef)searchDictionary,(CFTypeRef *)&result);
+    [searchDictionary release];    
+    NSLog(@"[LolayKeychain searchKeychainCopyMatching] result: %@ [%@]", result, key);
+
+    return result;
+}
+
+#pragma mark --
+#pragma mark Contract Methods
+
++ (BOOL) save:(NSString*)value forKey:(NSString*)key {
+    BOOL success = NO;
+    NSMutableDictionary *dictionary = [[self createSearchDictionary:key] retain];
+    NSData *data = [value dataUsingEncoding:NSUTF8StringEncoding];
+    [dictionary setObject:data forKey:(id)kSecValueData];
+    OSStatus addStatus = SecItemAdd((CFDictionaryRef)dictionary, NULL);    
+    NSLog(@"[LolayKeychain save] SecItemAdd result: %i [%@]", (int)addStatus, key);
+    if (addStatus == errSecSuccess) {
+        success =  YES;        
+    } else if (addStatus == errSecDuplicateItem) {
+        NSMutableDictionary *updateDictionary = [[NSMutableDictionary alloc] init];        
+        [updateDictionary setObject:data forKey:(id)kSecValueData];
+        OSStatus updateStatus = SecItemUpdate((CFDictionaryRef)dictionary,(CFDictionaryRef)updateDictionary);
+        NSLog(@"[LolayKeychain save] SecItemUpdate result: %i [%@]", (int)updateStatus, key);
+        if (updateStatus == errSecSuccess) {
+            success =  YES;
+        } else {
+            success =  NO;
+        }
+        [updateDictionary release];
+    } else {
+        success = NO;
+    }
+    
+    [dictionary release];
+    
+    return success;
 }
 
 + (NSString*) stringForKey:(NSString*)key {
-	if (key == nil) {
-		return nil;
-	}
-	
-	NSMutableDictionary *query = [[NSMutableDictionary alloc] initWithCapacity:3];
-	[query setObject:(id)kSecClassGenericPassword forKey:(id)kSecClass];
-    NSData *encodedKey = [key dataUsingEncoding:NSUTF8StringEncoding];
-	[query setObject:encodedKey forKey:(id)kSecAttrAccount];
-	[query setObject:(id)kCFBooleanTrue forKey:(id)kSecReturnData];
+    NSString *returnString = nil;
+	if (key != nil) {    
+        NSData *data = [[self searchKeychainCopyMatching:key] retain];    
+        if (data) {
+            returnString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+            [data release];
+        }
+    }    
+    NSLog(@"[LolayKeychain stringForKey] result: %@ [%@]", returnString, key);
 
-	NSData *dataFromKeychain = nil;
-	OSStatus error = SecItemCopyMatching((CFDictionaryRef)query, (CFTypeRef *)&dataFromKeychain);
-	NSString *stringToReturn = nil;
-	if (error == errSecSuccess) {
-		stringToReturn = [[[NSString alloc] initWithData:dataFromKeychain encoding:NSUTF8StringEncoding] autorelease];
-	}
-	
-	[dataFromKeychain release];
-	[query release];
-    
-	return stringToReturn;
+    return [returnString autorelease];
 }
 
-+ (void) deleteForKey:(NSString*)key {
++ (BOOL) deleteForKey:(NSString*)key {
 	if (key == nil) {
-		return;
+		return NO;
 	}
-	
-	NSMutableDictionary *query = [NSMutableDictionary dictionary];
-	[query setObject:(id)kSecClassGenericPassword forKey:(id)kSecClass];
-    NSData *encodedKey = [key dataUsingEncoding:NSUTF8StringEncoding];
-	[query setObject:encodedKey forKey:(id)kSecAttrAccount];
-		
-	OSStatus status = SecItemDelete((CFDictionaryRef)query);
-	if (status != errSecSuccess) {
-		NSLog(@"SecItemDelete failed: %@", key);
-	}
+    
+    NSMutableDictionary *searchDictionary = [[self createSearchDictionary:key] retain];    
+    OSStatus status = SecItemDelete((CFDictionaryRef)searchDictionary);
+    NSLog(@"[LolayKeychain deleteForKey] SecItemDelete result: %i [%@]", (int)status, key);
+    [searchDictionary release];    
+    if (status == errSecSuccess) {
+        return YES;
+    } 
+        
+    return NO;
 }
 
 @end
