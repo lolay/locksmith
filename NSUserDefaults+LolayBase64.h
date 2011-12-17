@@ -3,6 +3,7 @@
 //  Copyright 2011 Lolay, Inc. All rights reserved.
 //
 
+
 #import <Foundation/Foundation.h>
 
 @interface NSUserDefaults (LolayBase64)
