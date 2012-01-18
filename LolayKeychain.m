@@ -2,6 +2,7 @@
 //  Created by Lolay, Inc.
 //  Copyright 2011 Lolay, Inc. All rights reserved.
 //
+#import "LolayLocksmithGlobals.h"
 #import "LolayKeychain.h"
 #import <Security/Security.h>
 
@@ -17,7 +18,7 @@
     [searchDictionary setObject:encodedIdentifier forKey:(__bridge id)kSecAttrAccount];
     NSString *serviceName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
     [searchDictionary setObject:serviceName forKey:(__bridge id)kSecAttrService];    
-    NSLog(@"[LolayKeychain createSearchDictionary] dictionary: %@ [%@]", searchDictionary, key);
+    DLog(@"[LolayKeychain createSearchDictionary] dictionary: %@ [%@]", searchDictionary, key);
     
     return searchDictionary;
 }
@@ -34,7 +35,7 @@
     if (error == noErr) {
         data = CFBridgingRelease(result);
     }
-    NSLog(@"[LolayKeychain searchKeychainCopyMatching] result: %@ [%@]", data, key);
+    DLog(@"[LolayKeychain searchKeychainCopyMatching] result: %@ [%@]", data, key);
 
     return data;
 }
@@ -48,14 +49,14 @@
     NSData *data = [value dataUsingEncoding:NSUTF8StringEncoding];
     [dictionary setObject:data forKey:(__bridge id)kSecValueData];
     OSStatus addStatus = SecItemAdd((__bridge CFDictionaryRef)dictionary, NULL);    
-    NSLog(@"[LolayKeychain save] SecItemAdd result: %i [%@]", (int)addStatus, key);
+    DLog(@"[LolayKeychain save] SecItemAdd result: %i [%@]", (int)addStatus, key);
     if (addStatus == errSecSuccess) {
         success =  YES;        
     } else if (addStatus == errSecDuplicateItem) {
         NSMutableDictionary *updateDictionary = [[NSMutableDictionary alloc] init];        
         [updateDictionary setObject:data forKey:(__bridge id)kSecValueData];
         OSStatus updateStatus = SecItemUpdate((__bridge CFDictionaryRef)dictionary,(__bridge CFDictionaryRef)updateDictionary);
-        NSLog(@"[LolayKeychain save] SecItemUpdate result: %i [%@]", (int)updateStatus, key);
+        DLog(@"[LolayKeychain save] SecItemUpdate result: %i [%@]", (int)updateStatus, key);
         if (updateStatus == errSecSuccess) {
             success =  YES;
         } else {
@@ -76,7 +77,7 @@
             returnString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
         }
     }    
-    NSLog(@"[LolayKeychain stringForKey] result: %@ [%@]", returnString, key);
+    DLog(@"[LolayKeychain stringForKey] result: %@ [%@]", returnString, key);
 
     return returnString;
 }
@@ -88,7 +89,7 @@
     
     NSMutableDictionary *searchDictionary = [LolayKeychain createSearchDictionary:key];
     OSStatus status = SecItemDelete((__bridge CFDictionaryRef)searchDictionary);
-    NSLog(@"[LolayKeychain deleteForKey] SecItemDelete result: %i [%@]", (int)status, key);
+    DLog(@"[LolayKeychain deleteForKey] SecItemDelete result: %i [%@]", (int)status, key);
     if (status == errSecSuccess) {
         return YES;
     } 
