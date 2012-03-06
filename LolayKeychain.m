@@ -2,7 +2,6 @@
 //  Created by Lolay, Inc.
 //  Copyright 2011 Lolay, Inc. All rights reserved.
 //
-#import "LolayLocksmithGlobals.h"
 #import "LolayKeychain.h"
 #import <Security/Security.h>
 
