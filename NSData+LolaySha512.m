@@ -21,7 +21,11 @@
 
 - (NSData*) sha512Data {
 	unsigned char hash[CC_SHA512_DIGEST_LENGTH];
-	if (CC_SHA512([self bytes], [self length], hash)) {
+#if __LP64__ || (TARGET_OS_EMBEDDED && !TARGET_OS_IPHONE) || TARGET_OS_WIN32 || NS_BUILD_32_LIKE_64
+	if (CC_SHA512([self bytes], (CC_LONG) [self length], hash)) {
+#else
+	if (CC_SHA512([self bytes], (CC_LONG64) [self length], hash)) {
+#endif
 		return [NSData dataWithBytes:hash length:CC_SHA512_DIGEST_LENGTH];
 	}
 	return nil;	
