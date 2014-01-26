@@ -27,7 +27,7 @@
     NSData *encodedIdentifier = [key dataUsingEncoding:NSUTF8StringEncoding];    
     [searchDictionary setObject:encodedIdentifier forKey:(__bridge id)kSecAttrGeneric];    
     [searchDictionary setObject:encodedIdentifier forKey:(__bridge id)kSecAttrAccount];
-    NSString *serviceName = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleIdentifier"];
+    NSString *serviceName = [[[NSBundle bundleForClass:[self class]] infoDictionary] objectForKey:@"CFBundleIdentifier"];
     [searchDictionary setObject:serviceName forKey:(__bridge id)kSecAttrService];    
     DLog(@"[LolayKeychain createSearchDictionary] dictionary: %@ [%@]", searchDictionary, key);
     
