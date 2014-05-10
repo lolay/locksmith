@@ -15,6 +15,7 @@
 //
 
 #import "LolayKeychain.h"
+#import "LolayLocksmithGlobals.h"
 #import <Security/Security.h>
 
 @implementation LolayKeychain

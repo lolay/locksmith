@@ -1,0 +1,478 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		324D101D191EE14A007ABFD7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 324D101C191EE14A007ABFD7 /* Foundation.framework */; };
+		324D102B191EE14A007ABFD7 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 324D102A191EE14A007ABFD7 /* XCTest.framework */; };
+		324D102C191EE14A007ABFD7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 324D101C191EE14A007ABFD7 /* Foundation.framework */; };
+		324D1031191EE14A007ABFD7 /* libLolayLocksmith.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 324D1019191EE14A007ABFD7 /* libLolayLocksmith.a */; };
+		324D1037191EE14A007ABFD7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 324D1035191EE14A007ABFD7 /* InfoPlist.strings */; };
+		324D1039191EE14A007ABFD7 /* LolayLocksmithTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D1038191EE14A007ABFD7 /* LolayLocksmithTests.m */; };
+		324D104F191EE1B9007ABFD7 /* LolayKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D1044191EE1B9007ABFD7 /* LolayKeychain.m */; };
+		324D1050191EE1B9007ABFD7 /* LolayKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D1044191EE1B9007ABFD7 /* LolayKeychain.m */; };
+		324D1051191EE1B9007ABFD7 /* NSData+LolayBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D1046191EE1B9007ABFD7 /* NSData+LolayBase64.m */; };
+		324D1052191EE1B9007ABFD7 /* NSData+LolayBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D1046191EE1B9007ABFD7 /* NSData+LolayBase64.m */; };
+		324D1053191EE1B9007ABFD7 /* NSData+LolayHmacSha1.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D1048191EE1B9007ABFD7 /* NSData+LolayHmacSha1.m */; };
+		324D1054191EE1B9007ABFD7 /* NSData+LolayHmacSha1.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D1048191EE1B9007ABFD7 /* NSData+LolayHmacSha1.m */; };
+		324D1055191EE1B9007ABFD7 /* NSData+LolaySha512.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D104A191EE1B9007ABFD7 /* NSData+LolaySha512.m */; };
+		324D1056191EE1B9007ABFD7 /* NSData+LolaySha512.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D104A191EE1B9007ABFD7 /* NSData+LolaySha512.m */; };
+		324D1057191EE1B9007ABFD7 /* NSString+LolayBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D104C191EE1B9007ABFD7 /* NSString+LolayBase64.m */; };
+		324D1058191EE1B9007ABFD7 /* NSString+LolayBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D104C191EE1B9007ABFD7 /* NSString+LolayBase64.m */; };
+		324D1059191EE1B9007ABFD7 /* NSUserDefaults+LolayBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D104E191EE1B9007ABFD7 /* NSUserDefaults+LolayBase64.m */; };
+		324D105A191EE1B9007ABFD7 /* NSUserDefaults+LolayBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D104E191EE1B9007ABFD7 /* NSUserDefaults+LolayBase64.m */; };
+		324D105D191EE22D007ABFD7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 324D105C191EE22D007ABFD7 /* Security.framework */; };
+		324D1061191EE292007ABFD7 /* libcommonCrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 324D1060191EE292007ABFD7 /* libcommonCrypto.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		324D102F191EE14A007ABFD7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 324D1011191EE14A007ABFD7 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 324D1018191EE14A007ABFD7;
+			remoteInfo = LolayLocksmith;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		324D1017191EE14A007ABFD7 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		324D1019191EE14A007ABFD7 /* libLolayLocksmith.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLolayLocksmith.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		324D101C191EE14A007ABFD7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		324D1020191EE14A007ABFD7 /* LolayLocksmith-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LolayLocksmith-Prefix.pch"; sourceTree = "<group>"; };
+		324D1029191EE14A007ABFD7 /* LolayLocksmithTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LolayLocksmithTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		324D102A191EE14A007ABFD7 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		324D1034191EE14A007ABFD7 /* LolayLocksmithTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "LolayLocksmithTests-Info.plist"; sourceTree = "<group>"; };
+		324D1036191EE14A007ABFD7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		324D1038191EE14A007ABFD7 /* LolayLocksmithTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LolayLocksmithTests.m; sourceTree = "<group>"; };
+		324D1042191EE1A7007ABFD7 /* LolayLocksmithGlobals.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LolayLocksmithGlobals.h; sourceTree = SOURCE_ROOT; };
+		324D1043191EE1B9007ABFD7 /* LolayKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LolayKeychain.h; sourceTree = SOURCE_ROOT; };
+		324D1044191EE1B9007ABFD7 /* LolayKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LolayKeychain.m; sourceTree = SOURCE_ROOT; };
+		324D1045191EE1B9007ABFD7 /* NSData+LolayBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+LolayBase64.h"; sourceTree = SOURCE_ROOT; };
+		324D1046191EE1B9007ABFD7 /* NSData+LolayBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+LolayBase64.m"; sourceTree = SOURCE_ROOT; };
+		324D1047191EE1B9007ABFD7 /* NSData+LolayHmacSha1.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+LolayHmacSha1.h"; sourceTree = SOURCE_ROOT; };
+		324D1048191EE1B9007ABFD7 /* NSData+LolayHmacSha1.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+LolayHmacSha1.m"; sourceTree = SOURCE_ROOT; };
+		324D1049191EE1B9007ABFD7 /* NSData+LolaySha512.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+LolaySha512.h"; sourceTree = SOURCE_ROOT; };
+		324D104A191EE1B9007ABFD7 /* NSData+LolaySha512.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+LolaySha512.m"; sourceTree = SOURCE_ROOT; };
+		324D104B191EE1B9007ABFD7 /* NSString+LolayBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+LolayBase64.h"; sourceTree = SOURCE_ROOT; };
+		324D104C191EE1B9007ABFD7 /* NSString+LolayBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+LolayBase64.m"; sourceTree = SOURCE_ROOT; };
+		324D104D191EE1B9007ABFD7 /* NSUserDefaults+LolayBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSUserDefaults+LolayBase64.h"; sourceTree = SOURCE_ROOT; };
+		324D104E191EE1B9007ABFD7 /* NSUserDefaults+LolayBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+LolayBase64.m"; sourceTree = SOURCE_ROOT; };
+		324D105B191EE1C5007ABFD7 /* LolayLocksmith.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = LolayLocksmith.podspec; sourceTree = SOURCE_ROOT; };
+		324D105C191EE22D007ABFD7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		324D1060191EE292007ABFD7 /* libcommonCrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommonCrypto.dylib; path = usr/lib/system/libcommonCrypto.dylib; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		324D1016191EE14A007ABFD7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				324D1061191EE292007ABFD7 /* libcommonCrypto.dylib in Frameworks */,
+				324D105D191EE22D007ABFD7 /* Security.framework in Frameworks */,
+				324D101D191EE14A007ABFD7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		324D1026191EE14A007ABFD7 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				324D1031191EE14A007ABFD7 /* libLolayLocksmith.a in Frameworks */,
+				324D102B191EE14A007ABFD7 /* XCTest.framework in Frameworks */,
+				324D102C191EE14A007ABFD7 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		324D1010191EE14A007ABFD7 = {
+			isa = PBXGroup;
+			children = (
+				324D101E191EE14A007ABFD7 /* LolayLocksmith */,
+				324D1032191EE14A007ABFD7 /* LolayLocksmithTests */,
+				324D101B191EE14A007ABFD7 /* Frameworks */,
+				324D101A191EE14A007ABFD7 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		324D101A191EE14A007ABFD7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				324D1019191EE14A007ABFD7 /* libLolayLocksmith.a */,
+				324D1029191EE14A007ABFD7 /* LolayLocksmithTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		324D101B191EE14A007ABFD7 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				324D1060191EE292007ABFD7 /* libcommonCrypto.dylib */,
+				324D105C191EE22D007ABFD7 /* Security.framework */,
+				324D101C191EE14A007ABFD7 /* Foundation.framework */,
+				324D102A191EE14A007ABFD7 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		324D101E191EE14A007ABFD7 /* LolayLocksmith */ = {
+			isa = PBXGroup;
+			children = (
+				324D1042191EE1A7007ABFD7 /* LolayLocksmithGlobals.h */,
+				324D1043191EE1B9007ABFD7 /* LolayKeychain.h */,
+				324D1044191EE1B9007ABFD7 /* LolayKeychain.m */,
+				324D1045191EE1B9007ABFD7 /* NSData+LolayBase64.h */,
+				324D1046191EE1B9007ABFD7 /* NSData+LolayBase64.m */,
+				324D1047191EE1B9007ABFD7 /* NSData+LolayHmacSha1.h */,
+				324D1048191EE1B9007ABFD7 /* NSData+LolayHmacSha1.m */,
+				324D1049191EE1B9007ABFD7 /* NSData+LolaySha512.h */,
+				324D104A191EE1B9007ABFD7 /* NSData+LolaySha512.m */,
+				324D104B191EE1B9007ABFD7 /* NSString+LolayBase64.h */,
+				324D104C191EE1B9007ABFD7 /* NSString+LolayBase64.m */,
+				324D104D191EE1B9007ABFD7 /* NSUserDefaults+LolayBase64.h */,
+				324D104E191EE1B9007ABFD7 /* NSUserDefaults+LolayBase64.m */,
+				324D105B191EE1C5007ABFD7 /* LolayLocksmith.podspec */,
+				324D101F191EE14A007ABFD7 /* Supporting Files */,
+			);
+			path = LolayLocksmith;
+			sourceTree = "<group>";
+		};
+		324D101F191EE14A007ABFD7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				324D1020191EE14A007ABFD7 /* LolayLocksmith-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		324D1032191EE14A007ABFD7 /* LolayLocksmithTests */ = {
+			isa = PBXGroup;
+			children = (
+				324D1038191EE14A007ABFD7 /* LolayLocksmithTests.m */,
+				324D1033191EE14A007ABFD7 /* Supporting Files */,
+			);
+			path = LolayLocksmithTests;
+			sourceTree = "<group>";
+		};
+		324D1033191EE14A007ABFD7 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				324D1034191EE14A007ABFD7 /* LolayLocksmithTests-Info.plist */,
+				324D1035191EE14A007ABFD7 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		324D1018191EE14A007ABFD7 /* LolayLocksmith */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 324D103C191EE14A007ABFD7 /* Build configuration list for PBXNativeTarget "LolayLocksmith" */;
+			buildPhases = (
+				324D1015191EE14A007ABFD7 /* Sources */,
+				324D1016191EE14A007ABFD7 /* Frameworks */,
+				324D1017191EE14A007ABFD7 /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LolayLocksmith;
+			productName = LolayLocksmith;
+			productReference = 324D1019191EE14A007ABFD7 /* libLolayLocksmith.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		324D1028191EE14A007ABFD7 /* LolayLocksmithTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 324D103F191EE14A007ABFD7 /* Build configuration list for PBXNativeTarget "LolayLocksmithTests" */;
+			buildPhases = (
+				324D1025191EE14A007ABFD7 /* Sources */,
+				324D1026191EE14A007ABFD7 /* Frameworks */,
+				324D1027191EE14A007ABFD7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				324D1030191EE14A007ABFD7 /* PBXTargetDependency */,
+			);
+			name = LolayLocksmithTests;
+			productName = LolayLocksmithTests;
+			productReference = 324D1029191EE14A007ABFD7 /* LolayLocksmithTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		324D1011191EE14A007ABFD7 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = Lolay;
+			};
+			buildConfigurationList = 324D1014191EE14A007ABFD7 /* Build configuration list for PBXProject "LolayLocksmith" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 324D1010191EE14A007ABFD7;
+			productRefGroup = 324D101A191EE14A007ABFD7 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				324D1018191EE14A007ABFD7 /* LolayLocksmith */,
+				324D1028191EE14A007ABFD7 /* LolayLocksmithTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		324D1027191EE14A007ABFD7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				324D1037191EE14A007ABFD7 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		324D1015191EE14A007ABFD7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				324D1059191EE1B9007ABFD7 /* NSUserDefaults+LolayBase64.m in Sources */,
+				324D1057191EE1B9007ABFD7 /* NSString+LolayBase64.m in Sources */,
+				324D1053191EE1B9007ABFD7 /* NSData+LolayHmacSha1.m in Sources */,
+				324D104F191EE1B9007ABFD7 /* LolayKeychain.m in Sources */,
+				324D1055191EE1B9007ABFD7 /* NSData+LolaySha512.m in Sources */,
+				324D1051191EE1B9007ABFD7 /* NSData+LolayBase64.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		324D1025191EE14A007ABFD7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				324D1058191EE1B9007ABFD7 /* NSString+LolayBase64.m in Sources */,
+				324D105A191EE1B9007ABFD7 /* NSUserDefaults+LolayBase64.m in Sources */,
+				324D1052191EE1B9007ABFD7 /* NSData+LolayBase64.m in Sources */,
+				324D1039191EE14A007ABFD7 /* LolayLocksmithTests.m in Sources */,
+				324D1056191EE1B9007ABFD7 /* NSData+LolaySha512.m in Sources */,
+				324D1054191EE1B9007ABFD7 /* NSData+LolayHmacSha1.m in Sources */,
+				324D1050191EE1B9007ABFD7 /* LolayKeychain.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		324D1030191EE14A007ABFD7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 324D1018191EE14A007ABFD7 /* LolayLocksmith */;
+			targetProxy = 324D102F191EE14A007ABFD7 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		324D1035191EE14A007ABFD7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				324D1036191EE14A007ABFD7 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		324D103A191EE14A007ABFD7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		324D103B191EE14A007ABFD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		324D103D191EE14A007ABFD7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/LolayLocksmith.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LolayLocksmith/LolayLocksmith-Prefix.pch";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		324D103E191EE14A007ABFD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/LolayLocksmith.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LolayLocksmith/LolayLocksmith-Prefix.pch";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SDKROOT)/usr/lib/system",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		324D1040191EE14A007ABFD7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LolayLocksmith/LolayLocksmith-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "LolayLocksmithTests/LolayLocksmithTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		324D1041191EE14A007ABFD7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LolayLocksmith/LolayLocksmith-Prefix.pch";
+				INFOPLIST_FILE = "LolayLocksmithTests/LolayLocksmithTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		324D1014191EE14A007ABFD7 /* Build configuration list for PBXProject "LolayLocksmith" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				324D103A191EE14A007ABFD7 /* Debug */,
+				324D103B191EE14A007ABFD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		324D103C191EE14A007ABFD7 /* Build configuration list for PBXNativeTarget "LolayLocksmith" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				324D103D191EE14A007ABFD7 /* Debug */,
+				324D103E191EE14A007ABFD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		324D103F191EE14A007ABFD7 /* Build configuration list for PBXNativeTarget "LolayLocksmithTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				324D1040191EE14A007ABFD7 /* Debug */,
+				324D1041191EE14A007ABFD7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 324D1011191EE14A007ABFD7 /* Project object */;
+}
