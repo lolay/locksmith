@@ -26,7 +26,6 @@
 		324D1059191EE1B9007ABFD7 /* NSUserDefaults+LolayBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D104E191EE1B9007ABFD7 /* NSUserDefaults+LolayBase64.m */; };
 		324D105A191EE1B9007ABFD7 /* NSUserDefaults+LolayBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 324D104E191EE1B9007ABFD7 /* NSUserDefaults+LolayBase64.m */; };
 		324D105D191EE22D007ABFD7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 324D105C191EE22D007ABFD7 /* Security.framework */; };
-		324D1061191EE292007ABFD7 /* libcommonCrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 324D1060191EE292007ABFD7 /* libcommonCrypto.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,7 +74,6 @@
 		324D104E191EE1B9007ABFD7 /* NSUserDefaults+LolayBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSUserDefaults+LolayBase64.m"; sourceTree = SOURCE_ROOT; };
 		324D105B191EE1C5007ABFD7 /* LolayLocksmith.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = LolayLocksmith.podspec; sourceTree = SOURCE_ROOT; };
 		324D105C191EE22D007ABFD7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		324D1060191EE292007ABFD7 /* libcommonCrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcommonCrypto.dylib; path = usr/lib/system/libcommonCrypto.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,7 +81,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				324D1061191EE292007ABFD7 /* libcommonCrypto.dylib in Frameworks */,
 				324D105D191EE22D007ABFD7 /* Security.framework in Frameworks */,
 				324D101D191EE14A007ABFD7 /* Foundation.framework in Frameworks */,
 			);
@@ -124,7 +121,6 @@
 		324D101B191EE14A007ABFD7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				324D1060191EE292007ABFD7 /* libcommonCrypto.dylib */,
 				324D105C191EE22D007ABFD7 /* Security.framework */,
 				324D101C191EE14A007ABFD7 /* Foundation.framework */,
 				324D102A191EE14A007ABFD7 /* XCTest.framework */,
